@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡</title>
+	<style type="text/css">
+	#div1 div{
+		display: none;
+		width: 200px;
+		height: 200px;
+		background-color: pink;
+	}	
+
+	#div1 .active{
+		background-color: pink;
+	}
+
+	</style>
+	
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oDiv=document.getElementById("div1");
+		var aCh=oDiv.getElementsByTagName("div");
+		var btn=oDiv.getElementsByTagName("input");
+
+		for(var i=0;i<btn.length;i++){
+
+			btn[i].index=i;
+			btn[i].onclick=function(){
+
+			for(var i=0;i<btn.length;i++){
+
+				btn[i].className="";
+				aCh[i].style.display="none";
+			}
+
+			this.className="active";
+			aCh[this.index].style.display="block";
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<input type="button" name="btn1" value="1" class="active" />
+	<input type="button" name="btn2" value="2"/>
+	<input type="button" name="btn3" value="3"/>
+	<input type="button" name="btn4" value="4"/>
+
+	<div style="display: block;" ">11111</div>
+	<div>22222</div>
+	<div>33333</div>
+	<div>44444</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>月历</title>
+	<style type="text/css">
+	#div1{
+		width: 267px;
+		overflow: hidden;
+		border: 1px gray solid;
+	}
+
+	#div1 input{
+		width: 60px;
+		height: 60px;
+		background-color: black;
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+		float: left;
+		text-align: center;
+		margin-left: 5px;
+		margin-top: 2px;
+	}
+
+	#div1 .active{
+		background-color: white;
+		color:gray; 
+	}
+
+	#div1 .text{
+		width: 253px;
+		height: 200px;
+		margin-left: 5px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border:2px black solid;
+		float: left;
+	}
+	</style>
+	
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oDiv=document.getElementById("div1");
+		var oBtn=oDiv.getElementsByTagName("input");
+		var sDiv=oDiv.getElementsByTagName("div")[0];
+
+		var arr=[
+			'1月的活动',
+			'2月的活动',
+			'3月的活动',
+			'4月的活动',
+			'5月的活动',
+			'6月的活动',
+			'7月的活动',
+			'8月的活动',
+			'9月的活动',
+			'10月的活动',
+			'11月的活动',
+			'12月的活动'
+		];
+
+		for(var i=0;i<oBtn.length;i++){
+
+			oBtn[i].index=i;
+			oBtn[i].onclick=function(){
+			
+				for(var i=0;i<oBtn.length;i++){
+
+				oBtn[i].className="";
+
+				}
+
+			this.className="active";
+			sDiv.innerHTML=arr[this.index];
+			
+			}
+
+		}
+	}	
+	</script>
+
+</head>
+<body>
+<div id="div1">
+	<input type="button" value="1月" />
+	<input type="button" value="2月" />
+	<input type="button" value="3月" />
+	<input type="button" value="4月" />
+	<input type="button" value="5月" />
+	<input type="button" value="6月" />
+	<input type="button" value="7月" />
+	<input type="button" value="8月" />
+	<input type="button" value="9月" />
+	<input type="button" value="10月" />
+	<input type="button" value="11月" />
+	<input type="button" value="12月" />
+	
+	<div class="text">
+
+	</div>
+</div>
+</body>
+</html>
