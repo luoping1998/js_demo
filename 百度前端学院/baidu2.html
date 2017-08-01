@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+(function () {
+
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+
+  var arr=[];
+  var oM;
+
+  for(var i=0;i<aqiData.length;i++){
+
+  	if(aqiData[i][1]>60){
+
+  		arr.push(aqiData[i]);
+
+  			//将指数大于60的城市信息加到新数组中
+
+  	}
+
+  }
+
+  for(var i=0;i<arr.length-1;i++)
+  	for(var j=0;j<arr.length-1;j++){
+
+  		if(arr[j][1]<arr[j+1][1]){
+
+  			oM=arr[j];
+  			arr[j]=arr[j+1];
+  			arr[j+1]=oM;
+  		}
+  			//将新数组中的数据按照从大到小的顺序排序
+  	}
+
+
+  	for(var i=0;i<arr.length;i++){
+
+  	var li=document.createElement("li");
+  	var list=document.getElementById("aqi-list");
+
+  	li.innerHTML='第'+(i+1)+'名:'+arr[i][0]+':'+arr[i][1];
+
+  	list.appendChild(li);
+
+  			//将新数组中的数据加到list中
+  }
+
+
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>百度5</title>
+	<style type="text/css">
+	
+	.num{
+		width: 30px;
+		background-color: pink;
+		float: left;
+		margin:5px;
+	}
+	
+	li:hover{
+		background-color: lightgray;
+	}
+
+	ul{
+		list-style-type: none;
+	}
+	</style>
+
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var text=document.getElementById("text");
+		var btn1=document.getElementById('btn1');
+		var btn2=document.getElementById('btn2');
+		var btn3=document.getElementById('btn3');
+		var btn4=document.getElementById('btn4');
+		var btn5=document.getElementById('btn5');
+
+		var ul=document.getElementById("ul");
+		var count=1;
+
+		btn1.onclick=function(){
+
+			if(input()){
+			var li=document.createElement("li");
+			li.className='num';
+			li.style.height=text.value+'px';
+			ul.insertBefore(li,ul.firstChild);
+			count++;
+			}
+		}
+		
+		btn2.onclick=function(){
+
+			if(input()){
+			var li=document.createElement("li");
+			li.className='num';
+			li.style.height=text.value+'px';
+			ul.appendChild(li);
+			count++;}
+		}
+		
+		btn3.onclick=function(){
+
+			if(count<=0){
+
+				alert('已没有可以移除项');
+			}
+
+			else{
+			
+			if(ul.removeChild(ul.firstChild))
+			count--;
+			}
+		}
+		
+		btn4.onclick=function(){
+
+			if(count<=0){
+
+				alert('已没有可以移除项');
+			}
+			else{
+			if(ul.removeChild(ul.lastChild))
+			count--;
+			}
+		}
+
+		btn5.onclick=function(){
+
+			var Chan;
+			var list=ul.getElementsByTagName("li");
+			for(var i=0;i<list.length-1;i++){
+				for(var j=0;j<list.length-1;j++){
+
+					if(parseInt(list[j].style.height)>parseInt(list[j+1].style.height)){
+						Chan=list[j].style.height;
+						list[j].style.height=list[j+1].style.height;
+						list[j+1].style.height=Chan;
+					}
+
+				}
+			}
+		}
+
+		function input(){
+
+			if((parseInt(text.value)>=10) && (parseInt(text.value)<=100) ){
+				if(count>60){
+
+					alert('已达到上限');
+					return 0;
+				}
+
+				else{
+					return 1;
+				}
+			}
+
+			else{
+				alert('请输入10到100的数字');
+				return 0;
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="text" id="text" />
+	<input type="button" id="btn1" value="左侧入"/>
+	<input type="button" id="btn2" value="右侧入"/>
+	<input type="button" id="btn3" value="左侧出"/>
+	<input type="button" id="btn4" value="右侧出"/>
+	<input type="button" id="btn5" value="排序"/>
+
+	<ul id="ul">
+	
+	</ul>
+</body>
+</html>
