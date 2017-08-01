@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>时钟</title>
+	<style type="text/css">
+	body{
+		font-size: 100px;
+		font-weight: bold;
+	}
+
+	img{
+		width: 100px;
+		height: 100px;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		function toDouble(n){
+			if(n<10){
+
+				return '0'+n;
+			}
+			else{
+
+				return ''+n;
+			}
+
+		}
+
+		var aImg=document.getElementsByTagName("img");
+		
+		function tick(){
+		var oData=new Date();
+		
+		var str=toDouble(oData.getHours())+toDouble(oData.getMinutes())+toDouble(oData.getSeconds());
+
+		for(var i=0;i<aImg.length;i++){
+			aImg[i].src=str[i]+'.png';
+			}
+		}
+
+		tick();
+		setInterval(tick,1000);
+
+	}
+	</script>
+
+</head>
+<body>
+<p>
+	<img src="0.png"/>
+	<img src="1.png"/>:
+<!-- 	<img src="mao.png"/> -->
+	<img src="1.png"/>
+	<img src="1.png"/>:
+<!-- 	<img src="mao.png"/> -->
+	<img src="1.png"/>
+	<img src="1.png"/>	
+<p
+</body>
+</html>
