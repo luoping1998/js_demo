@@ -1,0 +1,13 @@
+var timer=setTimeout(function(){},time);
+      定时time毫秒执行function()，仅此一次。
+
+clearTimeout(timer);
+      消除上述定时器的影响；
+
+----------------------------------------------
+
+var timer=setInterval(function(){},time);
+       定时time毫秒执行一次function()，一直执行，直至消除影响；
+
+clearInterval(timer)；
+       消除上述定时器影响；
