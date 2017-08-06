@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>移动</title>
+	<style type="text/css">
+	#div1 {
+		width: 150px;
+		height: 200px;
+		background-color: pink;
+		position: absolute;
+		left: -150px;
+	}
+
+	#div1 span{
+		width: 20px;
+		height: 60px;
+		line-height: 20px;
+		background-color: lightgray;
+		position: absolute;
+		top:70px;
+		right: -20px;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oDiv=document.getElementById("div1");
+		var timer=null;
+
+		oDiv.onmouseover=function(){
+
+			startMove(0);
+		};
+
+		oDiv.onmouseout=function(){
+
+			startMove(-150);
+		}
+
+		function startMove(iTarget){
+
+			var speed;
+			clearInterval(timer);
+
+			if(oDiv.offsetLeft<iTarget){
+
+				speed=10;
+			}
+			else{
+
+				speed=-10;
+			}
+
+			timer=setInterval(function(){
+
+				if(oDiv.offsetLeft==iTarget){
+
+					clearInterval(timer);
+					oDiv.offsetLeft=iTarget;
+				}
+				else{
+
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			},30);
+		}
+	}
+	</script>
+	</head>
+<body>
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+</body>
+</html>

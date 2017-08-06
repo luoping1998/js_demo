@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>缓冲</title>
+	<style type="text/css">
+	#div1{
+		height: 300px;
+		width: 600px;
+		background-color: pink;
+		position: absolute;
+		left: -580px;
+		top: 50px;
+	}
+	</style>
+
+
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oDiv=document.getElementById("div1");
+		
+		oDiv.onmouseover=function(){
+
+			startMove(0);
+		};
+
+		oDiv.onmouseout=function(){
+
+			startMove(-580);
+		}
+
+	// var oDiv=document.getElementById("div1");
+	var timer=null;
+
+	function startMove(iTarget){
+
+		clearInterval(timer);
+
+		timer=setInterval(function(){
+
+		var speed=(iTarget-oDiv.offsetLeft)/10;
+
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		//缓冲运动对速度取整
+
+		if(oDiv.offsetLeft==iTarget){
+
+			clearInterval(timer);
+		}
+		else{
+
+			oDiv.style.left=oDiv.offsetLeft+speed+'px';
+		}
+	},30);
+	
+	}
+}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

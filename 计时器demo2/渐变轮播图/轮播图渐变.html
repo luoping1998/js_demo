@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>点击</title>
+	<style type="text/css">
+	#big{
+		width: 1000px;
+		height: 650px;
+		margin:100px auto;
+		overflow: hidden;
+	}
+
+	#img{
+		width: 1000px;
+		height: 650px;
+		margin:0 auto;
+		float: left;
+		position: relative;
+	}
+
+	#img ul{
+		list-style-type: none;
+		float: right;
+		position: absolute;
+		bottom: 0;
+		right: 20px;
+	}
+
+	#img ul li{
+		width: 10px;
+		height: 10px;
+		float: left;
+		margin:5px;
+		border-radius: 90px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 20px;
+		background-color: rgba(255,255,255,0.5);
+	}
+	
+	
+	</style>
+
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById("img")
+		var oImg=document.getElementsByTagName("img")[0];
+
+		var aLi=document.getElementsByTagName("li");
+		var timer=null;
+		var timer_two=null;
+		var last_index=0;
+
+		for(var i=0;i<aLi.length;i++){
+
+			aLi[i].index=i;
+			aLi[i].onmouseover=function(){
+
+				event.stopPropagation();
+				Show(this.index);
+				clearInterval(timer_two);
+			}
+
+		}
+
+		function Show(index){
+
+			var alpha=0;
+			
+			if(last_index!=index){
+
+				clearInterval(timer);
+				oImg.style.opacity=0;
+				oImg.style.filter='alpha(opacity=0)';
+				oImg.src=(index+1)+'.jpg';
+
+			timer=setInterval(function(){
+
+				if(alpha<100){
+			
+					alpha +=1;
+					oImg.style.opacity=alpha/100;
+					oImg.style.filter='alpha(opacity='+alpha+")";
+				}
+			},20);
+		}
+			last_index=index;
+		}
+
+		function move(){
+
+			clearInterval(timer_two);
+			timer_two=setInterval(function(){
+				
+				last_index++;
+				if(last_index==5){
+					last_index=0;
+				}
+				
+				Show(last_index++);
+
+			},3000);
+		}
+		move();
+
+		oDiv.onmouseout=function(){
+
+			clearInterval(timer_two);
+			move();
+		}
+
+		oDiv.onmouseover=function(){
+
+			clearInterval(timer_two);
+		}
+
+	}
+	</script>
+</head>
+
+<body>
+<div id="big">
+	<div id="img">
+		<img src="1.jpg" width="100%"/>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+	
+</body>
+</html>
