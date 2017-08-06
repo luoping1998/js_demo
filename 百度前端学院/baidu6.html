@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>百度6</title>
+	<style type="text/css">
+	.result{
+		background-color: red;
+		font-size: 40px;
+		font-weight: bold;;
+		color: white;
+		float: left;
+		margin:5px;
+	}
+
+	#text{
+		width: 200px;
+		height: 150px;
+	}
+	</style>
+	
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oTex=document.getElementById("text");
+		var oBtn1=document.getElementById("putin");
+		var oBtn2=document.getElementById("find");
+		var oFind=document.getElementById("search");
+		var oDiv=document.getElementById("result");
+
+		var arr=[];
+
+		oBtn1.onclick=function(){
+
+			var text=oTex.value;
+
+			for(var str='',i=0;i<text.length;i++){
+
+				var char=text[i].charCodeAt();
+
+				if((char>=65 && char<=90)||(char>=48&&char<=57)||(char>=97&&char<=122)){
+
+					str=str+text[i];
+				}
+				else{
+					var nDiv=document.createElement("div");
+					nDiv.innerHTML=str;
+					document.body.appendChild(nDiv);
+					nDiv.className='result';
+					arr.push(str);
+					str='';
+				}
+				if(i === (text.length-1)){
+					var nDiv=document.createElement("div");
+					nDiv.innerHTML=str;
+					nDiv.className='result';
+					document.body.appendChild(nDiv);
+					arr.push(str);
+				}
+			}
+		}
+
+		oBtn2.onclick=function(){
+
+			var Text=oFind.value;
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<arr[i].length;j++){
+
+				}
+			}
+		}
+	}
+	</script>
+	
+</head>
+<body>
+<div>
+	<input type="textarea" id="text"/>
+	<input type="button" id="putin" value="input"/>
+	<input type="button" id="find" value="find"/>
+	<input type="text" id="search" />
+</div>
+
+
+</body>
+</html>
