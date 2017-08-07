@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+	#big{
+		float: left;
+	}
+	#small select{
+		display: none;
+		float: left;
+	}
+	
+	#small{
+		float: left;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oSelBig=document.getElementById("big");
+		var oDiv=document.getElementById("small");
+
+		var oSelSmall=oDiv.getElementsByTagName("select");
+
+		var last_index=0;
+
+		oSelBig.onchange=function(){
+
+			var index=oSelBig.selectedIndex;
+			console.log(index);
+			oSelSmall[last_index].style.display="none";
+			oSelSmall[index].style.display="block";
+			last_index=index;
+
+			};
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<select id="big">
+			<option>陕西</option>
+			<option>湖南</option>
+			<option>云南</option>
+		</select>
+	</div>
+
+	<div id="small">
+		<select style="display: block;">
+			<option>西安</option>
+			<option>渭南</option>
+			<option>榆林</option>
+		</select>
+
+		<select>
+			<option>长沙</option>
+			<option>衡阳</option>
+			<option>娄底</option>
+		</select>
+
+		<select>
+			<option>昆明</option>
+			<option>玉溪</option>
+			<option>大理</option>
+		</select>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oSel1=document.getElementsByTagName('select')[0];
+		var oSel2=document.getElementsByTagName("select")[1];
+
+		var oArr=[['shanxi','1','2','3'],['hunan','q','w','q'],['beijing','=','-']];
+
+		for(var j=1;j<oArr[0].length;j++){
+
+			var oPtion=document.createElement("option");
+			oSel2.appendChild(oPtion);
+			oPtion.innerHTML=oArr[0][j];
+			}
+
+		for(var i=0;i<oArr.length;i++){
+			var oPt=document.createElement("option");
+			oSel1.appendChild(oPt);
+			oPt.innerHTML=oArr[i][0];
+
+			oSel1.onchange=function(){
+				oSel2.innerHTML=null;
+				for(var j=1;j<oArr[oSel1.selectedIndex].length;j++){
+
+					var oPtion=document.createElement("option");
+					oSel2.appendChild(oPtion);
+					oPtion.innerHTML=oArr[oSel1.selectedIndex][j];
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+<select></select>
+<select></select>
+</body>
+</html>
