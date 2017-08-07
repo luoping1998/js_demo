@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>滚动式轮播图</title>
+	<style type="text/css">
+
+	#img{
+		width: 1000px;
+		height: 650px;
+		margin: 70px auto;
+		overflow: hidden;
+		position: relative;
+	}
+
+	#img #left, #img #right {
+		width: 100px;
+		height: 150px;
+		position: absolute;
+		font-size: 100px;
+		top:260px;
+		text-align: center;
+		color: rgba(0,0,0,0.3);		
+		background-color: rgba(255,255,255,0.3);
+	}
+	
+	#img #right{
+		right: 0;
+	}
+
+	#img #left{
+		left: 0;
+		}
+
+	#img ul{
+		padding: 0;
+		position: absolute;
+	}
+
+	#img ul li{
+		list-style-type: none;
+		width: 1000px;
+		height: 650px;
+		float: left;
+	}
+
+	#img ul li img{
+		width: 100%;
+		height: 100%;
+	}
+
+	#img #move ul{
+		position: absolute;
+		bottom: 10px;
+		left: 420px;
+	}
+
+	#img #move ul li{
+		list-style-type: none;
+		width: 10px;
+		height: 10px;
+		margin-left:16px;
+		border-radius: 90px;
+		background-color: rgba(255,255,255,0.5);
+		bottom: 20px;
+		float: left;
+		left: 400px;
+	}
+
+	</style>
+	
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oImg = document.getElementById("img");
+		var oUl1 = document.getElementById("main");
+		var oUl2 = document.getElementsByTagName("ul")[1];
+
+		var aImg = oUl1.getElementsByTagName('li');
+		var aPoint = oUl2.getElementsByTagName('li');
+		
+		var timer = null;
+		var timer2 = null;
+		
+		var count = 0;
+		var last_index = 0;
+		var speed = 0;
+
+		var oLeft=document.getElementById("left");
+		var oRight=document.getElementById("right");
+
+		// oUl1.innerHTML=oUl1.innerHTML+oUl1.innerHTML;
+		oUl1.style.width=aImg[0].offsetWidth*aImg.length+'px';
+		
+		for(var i=0;i<aImg.length;i++){
+
+			aImg[i].index=i;
+
+		}
+
+		oLeft.onmouseover=function(){
+
+			if(last_index==0){
+				move(last_index,4)
+				last_index=4;
+			}
+			else{
+				move(last_index,last_index-1);
+				last_index=last_index-1;
+			}
+			oLeft.style.backgroundColor='rgba(0,0,0,0.5)';
+			oLeft.style.color='rgba(255,255,255,0.5';
+		}
+
+		oLeft.onmouseout=function(){
+			oLeft.style.backgroundColor='rgba(255,255,255,0.3)';
+			oLeft.style.color='rgba(0,0,0,0.3)';
+		}
+
+		oRight.onmouseout=function(){
+			oRight.style.backgroundColor='rgba(255,255,255,0.3)';
+			oRight.style.color='rgba(0,0,0,0.3)';
+		}
+		oRight.onmouseover=function(){
+
+			if(last_index==4){
+				move(last_index,0)
+				last_index=0;
+			}
+			else{
+				move(last_index,last_index+1);
+				last_index=last_index+1;
+			}
+			oRight.style.backgroundColor='rgba(0,0,0,0.5)';
+			oRight.style.color='rgba(255,255,255,0.5';
+		}
+
+
+		oImg.onmouseout=function(){
+			auto();
+		}
+
+		oImg.onmouseover=function(){
+			clearInterval(timer);
+		}	
+
+		for(var i=0;i<aPoint.length;i++){
+
+			aPoint[i].index=i;
+
+			aPoint[i].onmouseover=function(){
+				
+				// var color=;
+				aPoint[this.index].style.backgroundColor='rgba(0,0,0,0.5)';
+				move(last_index,this.index);
+				last_index=this.index;
+			}
+
+			aPoint[i].onmouseout=function(){
+				// var color=;
+				aPoint[this.index].style.backgroundColor='rgba(255,255,255,0.5)';
+				clearInterval(timer);
+			}
+		}
+
+		function auto(){
+
+			timer=setInterval(function(){
+
+				if(last_index==4){
+					move(last_index,0);
+				}
+
+				else{
+				move(last_index,last_index+1);
+				}
+
+				last_index++;
+
+				if(last_index==5){
+					last_index=0;
+				}
+
+			},3000);
+		}
+
+		function move(last_index,index){
+
+			var iTarget=-index*aImg[0].offsetWidth;
+
+			startMove(iTarget);
+		}
+
+		function startMove(iTarget){
+
+			clearInterval(timer2);
+			clearInterval(timer);
+
+			timer2=setInterval(function(){
+
+			var speed=(iTarget-oUl1.offsetLeft)/10;
+
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			//缓冲运动对速度取整
+			
+			if(oUl1.offsetLeft>0){
+
+			oUl1.style.left = -(oUl1.offsetWidth)+'px';
+			}
+			else if(oUl1.offsetLeft<=-(oUl1.offsetWidth))
+			{
+				oUl1.style.left='0px';
+			}
+
+			if(oUl1.offsetLeft==iTarget){
+
+				clearInterval(timer2);
+			}
+			else{
+
+				oUl1.style.left=oUl1.offsetLeft+speed+'px';
+			}
+		},50);
+		
+		}
+		auto();
+	}
+	</script>
+
+</head>
+<body>
+	<div id="img">
+		<ul id="main">
+			<li><img src="1.jpg"/></li>
+			<li><img src="2.jpg"/></li>
+			<li><img src="3.jpg"/></li>
+			<li><img src="4.jpg"/></li>
+			<li><img src="5.jpg"/></li>
+		</ul>
+		<div id="move">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		</div>
+		<div id="left"><</div>
+		<div id="right">></div>
+	</div>
+</body>
+</html>
