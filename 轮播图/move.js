@@ -51,7 +51,10 @@ function move() {
 
 	oMain.onmouseleave=function(){
 		clearTimeout(timer3);
-		timer3=setTimeout(auto,3000);
+		timer3=setTimeout(auto,4000);
+	}
+	oMain.onmouseenter=function(){
+		clearTimeout(timer3);
 	}
 
 	var aSpoint=oList.getElementsByTagName("div");
@@ -131,9 +134,6 @@ function move() {
 	}
 
 	oRight.onmouseover=oLeft.onmouseover=function(e){
-		clearTimeout(timer3);
-		clearTimeout(timer);
-		
 		oLeft.style.backgroundColor='rgba(0,0,0,0.4)';
 		oLeft.style.color='rgba(255,255,255,0.4)';
 		oRight.style.backgroundColor='rgba(0,0,0,0.4)';
@@ -174,9 +174,9 @@ function move() {
 		startMove(iTarget);
 		Black();
 		console.log('1:'+last_index);
-		timer2=setTimeout(auto,3000);
+		timer2=setTimeout(auto,4000);
 	}
 	Black();
-	// setTimeout(auto,3000);
+	timer3=setTimeout(auto,4000);
 
 }
