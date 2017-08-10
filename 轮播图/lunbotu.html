@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播图</title>
+	<style type="text/css">
+	#main{
+		margin:0 auto;
+		width: 1000px;
+		height: 650px;
+		padding: 0;
+		top:100px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	#main ul{
+		list-style-type: none;
+		width: 7000px;
+		height: 650px;
+		left: -1000px;
+		position: absolute;
+		padding: 0;
+	}
+
+	#main ul li{
+		float: left;
+		background-color: lightgray;
+	}
+
+	img{
+		width: 1000px;
+		height: 650px;
+	}
+
+	#main #left,#main #right{
+		width: 100px;
+		height: 150px;
+		position: absolute;
+		top:280px;
+		z-index: 8;
+		background-color:rgba(255,255,255,0.4);
+		font-weight: bold;
+		font-size: 100px;
+		text-align: center;
+		color: rgba(0,0,0,0.4);
+	}
+
+	#main #left{
+		left: 0;
+	}
+
+	#main #right{
+		right: 0;
+	}
+
+	#main #list{
+		width:1000px;
+		height :20px;
+		bottom: 10px;
+		left: 400px;
+		position: absolute;
+	}
+
+	#list .spoint{
+		width: 15px;
+		height: 15px;
+		margin-right: 15px;
+		border-radius: 90px;
+		background-color:rgba(255,255,255,0.4);
+		float: left;
+	}
+	
+	</style>
+	<script src="move.js"></script>
+</head>
+<body>
+	<div id="main">
+		<ul>
+			<li><img src="1.jpg"/></li>
+			<li><img src="2.jpg"/></li>
+			<li><img src="3.jpg"/></li>
+			<li><img src="4.jpg"/></li>
+			<li><img src="5.jpg"/></li>
+			<li><img src="6.png"></li>
+			<li><img src="7.png"></li>
+			<li><img src="8.png"></li>
+		</ul>
+
+		<div id="left"><</div>
+		<div id="right">></div>
+
+		<div id="list">
+		</div>
+	</div>
+
+	
+</body>
+</html>
