@@ -134,11 +134,17 @@ function move() {
 	}
 
 	oRight.onmouseover=oLeft.onmouseover=function(e){
+		clearTimeout(timer3);
+		clearTimeout(timer2);
+		clearTimeout(timer);
+		var iTarget=-(last_index)*1000;
+		startMove(iTarget);
+		Black();
 		oLeft.style.backgroundColor='rgba(0,0,0,0.4)';
 		oLeft.style.color='rgba(255,255,255,0.4)';
 		oRight.style.backgroundColor='rgba(0,0,0,0.4)';
 		oRight.style.color='rgba(255,255,255,0.4)';
-		Black();
+		console.log('clear');
 	}
 
 	function startMove(iTarget){
