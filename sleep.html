@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	var t = new Date().getTime();
+	while(new Date().getTime() - t < 10000) {
+		;
+	}
+	console.log(1);
+	</script>
+</head>
+<body>
+	<button id="sl">click</button>
+	<p></p>
+</body>
+<script type="text/javascript">
+document.getElementById("sl").addEventListener("click",function(){
+	console.log(new Date());
+	sleep(1000);
+	console.log(new Date());
+},false);
+
+function sleep(n) {
+	var t = new Date().getTime();
+	while(new Date().getTime() - t < n) {
+		;
+	}
+	console.log(1);
+}
+</script>
+</html>

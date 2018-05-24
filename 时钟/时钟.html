@@ -30,13 +30,12 @@
 		var aImg=document.getElementsByTagName("img");
 		
 		function tick(){
-		var oData=new Date();
-		
-		var str=toDouble(oData.getHours())+toDouble(oData.getMinutes())+toDouble(oData.getSeconds());
+			var oData=new Date();
+			var str=toDouble(oData.getHours())+toDouble(oData.getMinutes())+toDouble(oData.getSeconds());
 
-		for(var i=0;i<aImg.length;i++){
-			aImg[i].src=str[i]+'.png';
-			}
+			for(var i=0;i<aImg.length;i++){
+				aImg[i].src=str[i]+'.png';
+				}
 		}
 
 		tick();

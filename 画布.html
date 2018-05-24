@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>画布</title>
+	<style type="text/css">
+	#drawing {
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+		position: relative;
+	}
+	.point {
+		width: 2px;
+		height: 2px;
+		background-color: black;
+		position: absolute;
+	}
+	</style>
+</head>
+<body>
+	<div id="drawing"></div>
+</body>
+<script type="text/javascript">
+	var drawing = document.getElementById("drawing");
+	drawing.addEventListener("mousemove",function(e){
+		var event = e;
+		var oPoint = document.createElement("div");
+		oPoint.className = "point";
+		oPoint.style.left = event.screenX + 'px';
+		oPoint.style.top = event.screenY +'px';
+		drawing.appendChild(oPoint);
+	},false);
+</script>
+</html>

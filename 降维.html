@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数组降维</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var arr = [];
+	function Lower(arr ,cArr) {
+		// debugger;
+		for(var i = 0; i < cArr.length; i ++) {
+			if(Array.isArray(cArr[i])) {
+				Lower(arr,cArr[i]);
+			}else {
+				arr.push(cArr[i]);
+			}
+		}
+		// return arr;
+	}
+	var cArr = [[1,2,3],[[[4]]],[1,2,2,[2]]];
+	Lower(arr,cArr);
+	console.log(arr);
+</script>
+</html>
